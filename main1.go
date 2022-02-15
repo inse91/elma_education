@@ -3,26 +3,7 @@ package main
 import (
 	"fmt"
 	"sort"
-	//"strings"
 )
-
-type firstNameKey struct{}
-
-type lastNameKey struct{}
-
-// ctx := context.Background()
-
-// 	firstNameCtx := context.WithValue(ctx, firstNameKey{}, "firstname")
-// 	lastNameCtx := context.WithValue(ctx, lastNameKey{}, "lastname")
-
-// 	print(firstNameCtx)
-// 	print(lastNameCtx)
-
-// func print(ctx context.Context) {
-// 	val := ctx.Value(firstNameKey{})
-// 	fmt.Println(val.(string))
-
-// }
 
 func main() {
 
