@@ -7,29 +7,28 @@ import (
 
 func main() {
 
-	nums1 := []int{3, 8, 9, 7, 6}
+	nums1 := []int{1, 2, 3, 4, 5}
 	k1 := 3
-	fmt.Println(nums1, Solution1(nums1, k1))
+
+	fmt.Println(nums1)
+	fmt.Println(Solution1(nums1, k1))
 
 	nums2 := []int{4, 15, 18, 3, 15, 4, 18}
 	fmt.Println(Solution2(nums2))
 
-	nums3 := []int{3, 4, 2, 5}
+	nums3 := []int{4, 7, 6, 5, 8}
 	fmt.Println(Solution3(nums3))
 
-	nums4 := []int{7, 10, 6, 9}
+	nums4 := []int{2, 3, 1, 5}
 	fmt.Println(Solution4(nums4))
 
 }
 
 func Solution1(A []int, K int) []int { // первое задание: СДВИГ СЛАЙСА ВПРАВО
-
-	for i := 0; i < K; i++ {
-		y := len(A) - 1
-		A = append(A, A[:y]...)
-		A = A[y:]
-
-	}
+	l := len(A)
+	K = K % l
+	A = append(A, A[:]...)
+	A = A[l-K : 2*l-K]
 
 	return A
 }
@@ -68,8 +67,7 @@ func Solution3(A []int) (x int) { // третье задание: ПРОВЕРК
 	return
 }
 
-func Solution4(A []int) (x int) { // четвертое задание: ПОИСК НЕДОСТАЮЩЕГО ЭЛЕМЕНТА
-	// В ПОСЛЕДОВАТЕЛЬНОСТИ
+func Solution4(A []int) (x int) { // четвертое задание: ПОИСК НЕДОСТАЮЩЕГО ЭЛЕМЕНТА В ПОСЛЕДОВАТЕЛЬНОСТИ
 	sort.Ints(A)
 
 	for i := range A {
