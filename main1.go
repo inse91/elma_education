@@ -8,15 +8,14 @@ import (
 func main() {
 
 	nums1 := []int{1, 2, 3, 4, 5}
-	k1 := 3
-
+	k := 3
 	fmt.Println(nums1)
-	fmt.Println(Solution1(nums1, k1))
+	fmt.Println(Solution1(nums1, k))
 
-	nums2 := []int{4, 15, 18, 3, 15, 4, 18}
+	nums2 := []int{4, 15, 18, 3, 15, 4, 18, 19, 19}
 	fmt.Println(Solution2(nums2))
 
-	nums3 := []int{4, 7, 6, 5, 8}
+	nums3 := []int{4, 7, 6, 5, 8, 10}
 	fmt.Println(Solution3(nums3))
 
 	nums4 := []int{2, 3, 1, 5}
@@ -35,18 +34,21 @@ func Solution1(A []int, K int) []int { // первое задание: СДВИ�
 
 func Solution2(A []int) (x int) { // второе задание: ПОИСК ЭЛЕМЕНТА БЕЗ ПАРЫ
 
-	for i := range A {
-		count := 0
-		for j := range A {
-			if A[i] == A[j] {
-				count++
-			}
-		}
-		if count%2 != 0 {
-			x = A[i]
+	numsbool := map[int]bool{}
+
+	for _, val := range A {
+		if _, ok := numsbool[val]; ok {
+			numsbool[val] = !numsbool[val]
+		} else {
+			numsbool[val] = false
 		}
 	}
 
+	for idx, val := range numsbool {
+		if val == false {
+			x = idx
+		}
+	}
 	return
 }
 
